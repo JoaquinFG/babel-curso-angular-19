@@ -1,16 +1,20 @@
-import { Component, input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, OnInit, output } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 
 @Component({
   selector: 'app-header',
-  imports: [MenubarModule],
+  imports: [MenubarModule, ButtonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true //por defecto
 })
 export class HeaderComponent implements OnInit {
 
-  title = input<string>();
+  title = input<number>();
+  onEmmit = output<number>();
 
   items: MenuItem[] | undefined;
 
@@ -64,5 +68,9 @@ export class HeaderComponent implements OnInit {
                 icon: 'pi pi-envelope'
             }
         ]
+  }
+
+  onClick(){
+    this.onEmmit.emit(1)
   }
 }

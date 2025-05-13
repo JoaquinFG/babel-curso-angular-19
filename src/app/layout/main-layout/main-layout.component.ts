@@ -10,10 +10,15 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class MainLayoutComponent {
 
-  title = 'Titulo desde main'
+  title = 0;
 
   submitButton() {
     console.log('Button clicked!');
+  }
+
+  emmitReceived(event: number) {
+    this.title += event;
+    console.log(this.title)
   }
 
 }
