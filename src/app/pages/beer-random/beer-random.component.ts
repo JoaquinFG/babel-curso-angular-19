@@ -1,28 +1,23 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { BeerService } from '../../services/beer.service';
-import { Beer } from '../../models/beer.model';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { BeerInfoComponent } from '../../components/beer-info/beer-info.component';
 
 @Component({
   selector: 'app-beer-random',
-  imports: [],
+  imports: [BeerInfoComponent],
   templateUrl: './beer-random.component.html',
   styleUrl: './beer-random.component.scss',
 })
-export class BeerRandomComponent implements OnInit {
+export class BeerRandomComponent {
 
   private readonly _beerService = inject(BeerService);
 
-  randomBeer: Beer | undefined;
-  beerImage: string | undefined;
-
-  constructor(){
-  }
-  
-  ngOnInit(): void {
-    this._beerService.getRandomBeer().subscribe((data) => {
-      this.randomBeer = data;
-      this.beerImage = `https://punkapi.online/v3/images/${data.image}`
-    });
-  }
+  readonly randomBeer = toSignal(this._beerService.getRandomBeer(), { initialValue: undefined});
+  readonly beerImage = computed(() =>{
+    return this.randomBeer()?.image
+      ? `https://punkapi.online/v3/images/${this.randomBeer()?.image}`
+      : undefined
+  })
 
 }
