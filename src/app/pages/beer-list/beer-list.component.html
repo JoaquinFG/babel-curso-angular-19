@@ -5,7 +5,11 @@
 @if (beers()){
   <div class="beer-grid">
     @for (beer of beers(); track beer.id) {
-      <app-beer-card [beer]="beer" [imageUrl]="'https://punkapi.online/v3/images/' + beer.image"></app-beer-card>
+      <app-beer-card
+        [beer]="beer"
+        [imageUrl]="'https://punkapi.online/v3/images/' + beer.image"
+        (onViewClick)="handleViewBeer(beer.id)"
+        ></app-beer-card>
     }
   </div>
 }

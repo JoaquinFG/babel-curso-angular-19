@@ -3,6 +3,7 @@ import { BeerService } from '../../services/beer.service';
 import { BeerCardComponent } from '../../components/beer-card/beer-card.component';
 import { Beer } from '../../models/beer.model';
 import { BeerToolbarComponent } from '../../components/beer-toolbar/beer-toolbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-beer-list',
@@ -13,6 +14,7 @@ import { BeerToolbarComponent } from '../../components/beer-toolbar/beer-toolbar
 export class BeerListComponent {
 
   private readonly beerservice = inject(BeerService);
+  private readonly router = inject(Router);
   
   readonly beers = signal<Beer[] | undefined>(undefined);
 
@@ -32,6 +34,10 @@ export class BeerListComponent {
         console.log('Carga de cervezas finalizada');
       }
     })
+  }
+
+  handleViewBeer( id: number ) {
+    this.router.navigate(['details', id]);
   }
 
 }

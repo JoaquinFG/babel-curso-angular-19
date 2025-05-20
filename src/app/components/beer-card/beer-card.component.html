@@ -7,6 +7,6 @@
   <ng-template #title>{{ beer()?.name }}</ng-template>
   <ng-template #subtitle> ID: {{ beer()?.id }} </ng-template>
   <ng-template #footer>
-    <p-button label="View beer" severity="secondary" class="w-full"/>
+    <p-button label="View beer" severity="secondary" class="w-full" (onClick)="handleClick()"/>
   </ng-template>
 </p-card>

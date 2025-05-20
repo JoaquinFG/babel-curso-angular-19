@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Beer } from '../../models/beer.model';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -12,5 +12,11 @@ export class BeerCardComponent {
 
   readonly beer = input<Beer | undefined>(undefined);
   readonly imageUrl = input<string | undefined>(undefined);
+
+  readonly onViewClick = output<void>();
+
+  handleClick() {
+    this.onViewClick.emit();
+  }
 
 }
