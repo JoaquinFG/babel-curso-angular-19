@@ -1,4 +1,7 @@
-<h1>Beer List</h1>
+<div class="beer-list-header">
+  <h1>Beer List</h1>
+  <app-beer-toolbar class="toolbar" (onSearchBeerPage)="loadBeers($event)"></app-beer-toolbar>
+</div>
 @if (beers()){
   <div class="beer-grid">
     @for (beer of beers(); track beer.id) {

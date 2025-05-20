@@ -19,3 +19,14 @@
 h1 {
   padding-left: 1rem;
 }
+
+.beer-list-header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-right: 1rem;
+
+  .toolbar{
+    width: 80%;
+  }
+}
