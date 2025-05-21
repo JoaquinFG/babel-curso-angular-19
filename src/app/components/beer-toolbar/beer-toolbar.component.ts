@@ -1,10 +1,11 @@
-import { Component, output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { Toolbar } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconField } from 'primeng/iconfield';
 import { InputIcon } from 'primeng/inputicon';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-beer-toolbar',
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './beer-toolbar.component.scss'
 })
 export class BeerToolbarComponent {
-
+  private readonly router = inject(Router);
   pageNumber: number | null = null;
 
   readonly onSearchBeerPage = output<number>();
@@ -38,6 +39,10 @@ export class BeerToolbarComponent {
     if (page !==null && page > 0) {
       this.onSearchBeerPage.emit(page);
     }
+  }
+
+  createBeer() {
+    this.router.navigate(['/create']);
   }
 
 }
