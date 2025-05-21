@@ -31,7 +31,12 @@ export class HeaderComponent implements OnInit {
           label: 'Random',
           icon: 'pi pi-sync',
           routerLink: '/random'
-      }   
+      },
+      {
+          label: 'Local',
+          icon: 'pi pi-user',
+          routerLink: '/local'
+      }  
     ]
   }
 

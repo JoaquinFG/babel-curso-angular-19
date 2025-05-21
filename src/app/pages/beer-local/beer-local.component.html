@@ -1,0 +1,16 @@
+<div class="beer-list-header">
+  <h1>Local Beer</h1>
+</div>
+@if (beers()){
+  <div class="beer-grid">
+    @for (beer of beers(); track beer.id) {
+      <app-beer-card
+        [beer]="beer"
+        imageUrl="https://www.laventitadelfoodie.com/787-large_default/cerveza-dorada-especial-tostada-o-roja-.jpg"
+        ></app-beer-card>
+    }
+  </div>
+}
+@else {
+  <p class="empty-message">No hay cervezas guardadas en el LocalStorage</p>
+}

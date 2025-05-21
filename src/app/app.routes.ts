@@ -20,6 +20,10 @@ export const routes: Routes = [
       {
         path: 'create',
         loadComponent: () => import('./pages/beer-create/beer-create.component').then(m => m.BeerCreateComponent),
+      },
+      {
+        path: 'local',
+        loadComponent: () => import('./pages/beer-local/beer-local.component').then(m => m.BeerLocalComponent),
       }
     ]
   }
